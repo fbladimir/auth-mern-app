@@ -36,6 +36,19 @@ function passwordVerify(errors = {}, values) {
     return errors; 
 }
 
+/* Validate reset password */ 
+
+export async function resetPasswordValidation(values) { 
+    const errors = passwordVerify({}, values); 
+
+    if (values.password !== values.confirm_pwd) { 
+        errors.exist = toast.error("Passwords do not match"); 
+    }
+
+    return errors; 
+}
+
+
 
 
 
