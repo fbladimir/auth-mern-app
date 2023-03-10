@@ -1,18 +1,17 @@
-/* mongodb connection */ 
-import mongoose from 'mongoose'; 
-import { MongoMemoryServer } from 'mongodb-memory-server'; 
 
 
-async function connect() { 
+import mongoose from "mongoose";
 
-    const mongod = await MongoMemoryServer.create(); 
-    const getUri = mongod.getUri(); 
+import { MongoMemoryServer } from "mongodb-memory-server";
 
-    mongoose.set('strictQuery', true); 
+async function connect(){
+    const mongod = await MongoMemoryServer.create();
+    const getUri = mongod.getUri();
+
+    mongoose.set('strictQuery', true)
     const db = await mongoose.connect(getUri);
-    console.log("Database connected");  
-
-    return db; 
+    console.log("Database Connected")
+    return db;
 }
 
-export default connect; 
+export default connect;
